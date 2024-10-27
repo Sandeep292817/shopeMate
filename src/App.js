@@ -1,24 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
 
+import { useState,createContext } from 'react';
+import './App.css';
+import { Header, NavBar,Footer} from './Components';
+
+export const AppContext = createContext(null);
 function App() {
+  const[cartCount,setCartCount] = useState(0);
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppContext.Provider value={{cartCount,setCartCount}}>
+      <Header/>
+      <NavBar/>
+      <Footer/>
+    </AppContext.Provider>
   );
 }
 
